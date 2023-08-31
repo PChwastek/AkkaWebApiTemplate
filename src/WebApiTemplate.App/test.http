@@ -1,0 +1,5 @@
+### AKKA
+GET https://localhost:5001/healthz/akka
+
+### All
+GET https://localhost:5001/health
