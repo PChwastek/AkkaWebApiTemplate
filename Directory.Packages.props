@@ -2,7 +2,6 @@
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
-
   <!-- Akka.NET Package Versions -->
   <ItemGroup>
     <PackageVersion Include="Akka" Version="1.5.12" />
@@ -11,19 +10,19 @@
     <PackageVersion Include="Akka.HealthCheck.Hosting.Web" Version="1.5.9" />
     <PackageVersion Include="Akka.Management" Version="1.5.7" />
     <PackageVersion Include="Akka.Persistence.Azure.Hosting" Version="1.5.1" />
+    <PackageVersion Include="AspNetCore.HealthChecks.Redis" Version="7.0.0" />
+    <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
     <PackageVersion Include="Microsoft.NET.Build.Containers" Version="7.0.400" />
     <PackageVersion Include="Petabridge.Cmd.Cluster.Sharding" Version="$(PbmVersion)" />
     <PackageVersion Include="Petabridge.Cmd.Cluster" Version="$(PbmVersion)" />
     <PackageVersion Include="Petabridge.Cmd.Remote" Version="$(PbmVersion)" />
   </ItemGroup>
-
   <!-- ASP.NET Core Package Versions -->
   <ItemGroup>
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
   </ItemGroup>
-
   <!-- Test Package Versions -->
   <ItemGroup>
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.7.1" />

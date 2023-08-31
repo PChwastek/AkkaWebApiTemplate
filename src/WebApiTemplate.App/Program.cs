@@ -1,5 +1,7 @@
 using Akka.HealthCheck.Hosting;
 using Akka.HealthCheck.Hosting.Web;
+using HealthChecks.UI.Client;
+using Microsoft.Extensions.DependencyInjection;
 using WebApiTemplate.App.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +29,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks().AddRedis("localhost:6379");
 
 var app = builder.Build();
 
@@ -38,11 +41,18 @@ if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName.Equals("A
 }
 
 app.UseHttpsRedirection();
+
 app.MapAkkaHealthCheckRoutes(optionConfigure: (_, opt) =>
 {
     // Use a custom response writer to output a json of all reported statuses
     opt.ResponseWriter = Helper.JsonResponseWriter;
 }); // needed for Akka.HealthCheck
+
+app.MapHealthChecks("/health", new()
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+
 app.UseAuthorization();
 
 app.MapControllers();
